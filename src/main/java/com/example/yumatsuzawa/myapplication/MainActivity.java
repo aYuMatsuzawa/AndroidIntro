@@ -1,6 +1,8 @@
 package com.example.yumatsuzawa.myapplication;
 
 import android.app.AlertDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,6 +24,15 @@ public class MainActivity extends ActionBarActivity {
 //        setContentView(R.layout.activity_main);
 //
 //        Button button = (Button)findViewById(R.id.button);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Uri googleUri = Uri.parse("http://www.google.co.jp");
+//                Intent it = new Intent(Intent.ACTION_VIEW, googleUri);
+//                startActivity(it);
+//            }
+//        });
+
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -65,10 +76,13 @@ public class MainActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //                String item = (String)parent.getItemAtPosition(position);
                 Employee item = (Employee)parent.getItemAtPosition(position);
-                Toast.makeText(MainActivity.this,
-                        "Name: " + item.getName().toUpperCase() + "\n" +
-                        "Role: " + item.getRole(),
-                        Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this,
+//                        "Name: " + item.getName().toUpperCase() + "\n" +
+//                        "Role: " + item.getRole(),
+//                        Toast.LENGTH_LONG).show();
+                Uri qUri = Uri.parse("http://www.google.co.jp/search?q=" + item.getName());
+                Intent it = new Intent(Intent.ACTION_VIEW, qUri);
+                startActivity(it);
             }
         });
 
