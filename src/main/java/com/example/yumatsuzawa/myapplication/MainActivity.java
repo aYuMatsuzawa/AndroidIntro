@@ -1,5 +1,6 @@
 package com.example.yumatsuzawa.myapplication;
 
+import android.app.AlertDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,6 +23,21 @@ public class MainActivity extends ActionBarActivity {
                 Toast.makeText(MainActivity.this, "Yo Men!", Toast.LENGTH_LONG).show();
             }
         });
+
+        Button button2 = (Button)findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
+                        .setMessage("Hey Jude")
+                        .setPositiveButton("Don't make it bad", null)
+                        .create();
+                alertDialog.show();
+            }
+        });
+
+        HelloWorldView hwView = new HelloWorldView(this);
+        setContentView(hwView);
     }
 
 
