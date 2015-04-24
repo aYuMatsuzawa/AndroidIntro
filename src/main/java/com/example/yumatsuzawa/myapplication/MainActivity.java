@@ -47,18 +47,28 @@ public class MainActivity extends ActionBarActivity {
         ListView lsView = new ListView(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1);
-
-        lsView.setAdapter(adapter);
+        ArrayAdapter<Employee> empAdapter = new ArrayAdapter<Employee>(this,
+                android.R.layout.simple_list_item_1);
+        lsView.setAdapter(empAdapter);
 
         adapter.add("Alpha");
         adapter.add("Beta");
         adapter.add("Charlie");
 
+        empAdapter.add(new Employee("Alan", "VP"));
+        empAdapter.add(new Employee("Bob", "CTO"));
+        empAdapter.add(new Employee("Cecilia", "Financial Adviser"));
+        empAdapter.add(new Employee("David", "Engineer"));
+
         lsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String item = (String)parent.getItemAtPosition(position);
-                Toast.makeText(MainActivity.this, item, Toast.LENGTH_LONG).show();
+//                String item = (String)parent.getItemAtPosition(position);
+                Employee item = (Employee)parent.getItemAtPosition(position);
+                Toast.makeText(MainActivity.this,
+                        "Name: " + item.getName().toUpperCase() + "\n" +
+                        "Role: " + item.getRole(),
+                        Toast.LENGTH_LONG).show();
             }
         });
 
